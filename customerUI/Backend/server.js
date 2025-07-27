@@ -12,10 +12,14 @@ const MONGO_URI =
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "client", "build")));
+
 
 // Routes
 app.use("/api/auth", authRoutes);
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 // DB Connection & Server Start
 mongoose
   .connect(MONGO_URI)
