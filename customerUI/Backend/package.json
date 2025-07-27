@@ -4,7 +4,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "yarn --cwd ./client install && yarn --cwd ./client build && yarn install "
+"build": "yarn install && yarn --cwd client install && yarn --cwd client build"
+
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

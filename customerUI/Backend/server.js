@@ -2,6 +2,7 @@ const express = require("express"); // ✅ no space here!
 const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
+const path = require('path');
 
 const app = express();
 const PORT = 5000;
@@ -17,8 +18,8 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 // DB Connection & Server Start
 mongoose
