@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-"build": "yarn install && yarn --cwd client install && yarn --cwd client build"
+"build": "yarn install && cd .. && yarn install && yarn run build"
 
   },
   "dependencies": {

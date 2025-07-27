@@ -13,14 +13,20 @@ const MONGO_URI =
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "client", "build")));
+//app.use(express.static(path.join(__dirname, "client", "build")));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "../build"))); // ← CORRECTED
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html")); // ← CORRECTED
+});
 
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 // DB Connection & Server Start
 mongoose
   .connect(MONGO_URI)
